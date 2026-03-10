@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --color-dark: #050508;
+  --color-cyan: #00f5d4;
+  --color-violet: #8b5cf6;
+  --color-amber: #f59e0b;
+  
+  --font-syne: "Syne", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: initial; /* Lenis handles smooth scroll */
+    cursor: none; /* We use a custom cursor */
+  }
+
+  body {
+    @apply bg-dark text-slate-300 font-mono;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-syne {
+    @apply font-syne;
+  }
+
+  ::selection {
+    @apply bg-violet/30 text-cyan;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #050508;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #00f5d4, #8b5cf6);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #8b5cf6, #00f5d4);
+  }
+
+  /* Remove default link highlight */
+  a, button {
+    cursor: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer utilities {
+  .text-glow-cyan {
+    text-shadow: 0 0 10px rgba(0, 245, 212, 0.5);
+  }
+  .text-glow-violet {
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+  }
+  .glass-panel {
+    @apply bg-slate-900/40 backdrop-blur-md border border-slate-800/50;
+  }
+}
